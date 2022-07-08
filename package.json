@@ -1,0 +1,12 @@
+{
+  "name": "example",
+  "private": true,
+  "scripts": {
+    "start": "node test.js"
+  },
+  "dependencies": {
+    "hot-shots": "^9.1.0"
+  },
+  "devDependencies": {
+  }
+}

@@ -1,0 +1,21 @@
+
+# This is the primary docker-compose file for development usage.
+# All other docker-compose files (e.g. the ones in docker/ directory) in platform repo can be outdated and not maintained.
+version: "3.4"
+services:
+  dd-agent:
+    image: gcr.io/datadoghq/agent:7
+    environment:
+      DD_API_KEY: ${DD_API_KEY}
+      DD_SITE: "datadoghq.com"
+
+  app:
+    build:
+      context: .
+    command: yarn start
+    depends_on:
+      - dd-agent
+    volumes:
+      - .:/app
+    environment:
+      DD_AGENT_HOST: 'dd-agent'
